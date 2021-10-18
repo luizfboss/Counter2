@@ -1,7 +1,7 @@
-var num = document.querySelector('input#numero')
+var num = document.querySelector('input#number')
 var lista = document.querySelector('select#list')
 var res = document.querySelector('div#res')
-var valores = []
+var values = []
 
 function isNum(n) {
     if (Number(n) >= 1 && Number(n) <= 100) {
@@ -11,7 +11,7 @@ function isNum(n) {
     }
 }
 document.querySelector
-function inLista(n, l) {
+function inList(n, l) {
     if (l.indexOf(Number(n)) != -1) {
         return true
     } else {
@@ -19,42 +19,42 @@ function inLista(n, l) {
     }
 }
 
-function adicionar() {
-    if (isNum(num.value) && !inLista(num.value, valores)) {
-        valores.push(Number(num.value))
+function add() {
+    if (isNum(num.value) && !inList(num.value, values)) {
+        values.push(Number(num.value))
         let item = document.createElement('option')
-        item.text = `Valor ${num.value} adicionado`
+        item.text = `The value ${num.value} has been added`
         lista.appendChild(item)
     } else {
-        window.alert('Valor invalido. Tente novamente.')
+        window.alert('Invalid value. Try again.')
     }
     num.value = ''
-    // "Focar" no elemento
+    // "Focus" on element
     num.focus()
 }
 
-function finalizar(){
-    if (valores.length == 0){
-        window.alert('Adicione valores antes de finalizar!')
+function end(){
+    if (values.length == 0){
+        window.alert('Adicione values antes de finalizar!')
     } else{
-        let tot = valores.length
-        let maior = valores[0]
-        let menor = valores[0]
-        for(let pos in valores) {
-            soma += valores[pos]
-            if (valores[pos] > maior){
-                maior = valores[pos]
+        let tot = values.length
+        let greater = values[0]
+        let lower = values[0]
+        for(let pos in values) {
+            sum += values[pos]
+            if (values[pos] > greater){
+                greater = values[pos]
             }        
-            if (valores[pos] < menor){
-                menor = valores[pos]
+            if (values[pos] < lower){
+                lower = values[pos]
             }
         }
-        media = soma / tot
+        avg = sum / tot
         res.innerHTML = ''
-        res.innerHTML += `<p>Ao todo temos ${tot} numeros cadastrados</p>`
-        res.innerHTML += `<p>O maior valor informado foi ${maior}</p>`
-        res.innerHTML += `<p>O menor valor informado foi ${menor}</p>`
-        res.innerHTML += `<p>A soma de todos os valores foi ${soma}</p>`
-        res.innerHTML += `<p>A soma foi ${media}</p>`
+        res.innerHTML += `<p>There are ${tot} numbers registered</p>`
+        res.innerHTML += `<p>The greatest valued is ${greater}</p>`
+        res.innerHTML += `<p>The lowest value informed is ${lower}</p>`
+        res.innerHTML += `<p>The sum of all values is ${sum}</p>`
+        res.innerHTML += `<p>The mean is ${avg}</p>`
     }
 }
